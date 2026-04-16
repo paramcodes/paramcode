@@ -1,3 +1,4 @@
+"use client"
 import AuthButton from "./components/authbutton";
 
 export default function Home(){
