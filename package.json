@@ -2,6 +2,7 @@
   "name": "paramcode",
   "private": true,
   "scripts": {
+    "db:generate": "prisma generate",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
