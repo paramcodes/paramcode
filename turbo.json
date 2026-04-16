@@ -13,6 +13,14 @@
         "NEXTAUTH_URL"
       ]
     },
+    "web#build": {
+      "env": [
+        "NEXTAUTH_URL",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "NEXTAUTH_SECRET"
+      ]
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
