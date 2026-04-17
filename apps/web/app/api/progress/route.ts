@@ -1,10 +1,11 @@
 import prisma from "../lib/prisma";
 import { getServerSession } from "next-auth";
+import {authOptions} from "../lib/auth.ts"
 
 export async function POST(req: Request) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
-  if (!session?.user?.email) {
+  if (!session || !session?.user?.email) {
     return new Response("Unauthorized", { status: 401 });
   }
 
@@ -33,8 +34,10 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
-  const session = await getServerSession();
-
+  const session = await getServerSession(authOptions);
+   if (!session || !session?.user?.email) {
+    return new Response("Unauthorized", { status: 401 });
+  }
   const user = await prisma.user.findUnique({
     where: { email: session.user.email },
   });

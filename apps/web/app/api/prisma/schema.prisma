@@ -54,7 +54,7 @@ model Session {
 model Problem{
   id String @id
   title String
-  difficuly String
+  difficulty String
   url String
   
   progress Progress[]
