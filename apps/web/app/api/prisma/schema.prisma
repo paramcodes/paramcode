@@ -21,6 +21,7 @@ model User {
 
   accounts Account[]
   sessions Session[]
+  progress Progress[]
 }
 
 model Account {
@@ -48,4 +49,25 @@ model Session {
   expires      DateTime
 
   user User @relation(fields: [userId], references: [id])
+}
+
+model Problem{
+  id String @id
+  title String
+  difficuly String
+  url String
+  
+  progress Progress[]
+}
+
+model Progress{
+  id String @id @default(cuid())
+  userId    String
+  problemId String
+  completed Boolean @default(false)
+
+  user    User    @relation(fields: [userId], references: [id])
+  problem Problem @relation(fields: [problemId], references: [id])
+
+  @@unique([userId, problemId])
 }
