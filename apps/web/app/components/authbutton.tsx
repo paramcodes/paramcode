@@ -15,7 +15,7 @@ export default function AuthButton() {
         {<p className="font-bold text-center">{session.user?.name}</p>}
         <Button handler={signOut} content={"Logout"} />
           </div>
-        {<img src={session.user?.image} className="h-10 w-10 rounded-2xl"/>}
+        {<img src={session.user?.image ?? "profile.png"} className="h-10 w-10 rounded-2xl"/>}
         </div>
       </>
     );
